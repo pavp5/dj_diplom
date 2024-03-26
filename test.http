@@ -1,0 +1,43 @@
+
+GET http://127.0.0.1:8000/api/v1/books/
+
+###
+
+POST http://127.0.0.1:8000/api/v1/books/create/
+Content-Type: application/json
+
+{
+    "author": "Стивенсон Р.",
+    "title": "Остров сокровищ",
+    "year": 1885
+}
+
+###
+
+GET http://127.0.0.1:8000/api/v1/books/3/
+
+###
+
+PATCH http://127.0.0.1:8000/api/v1/books/update/4/
+Content-Type: application/json
+
+{
+    "title": "Таинственный остров"
+}
+
+###
+
+DELETE http://127.0.0.1:8000/api/v1/books/delete/5/
+
+###
+
+GET http://127.0.0.1:8000/api/v1/orders/2/
+
+###
+
+PATCH http://127.0.0.1:8000/api/v1/orders/2/
+Content-Type: application/json
+
+{
+    "user_name": "Петров Петр Андреевич"
+}
