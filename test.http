@@ -1,28 +1,27 @@
 
-GET http://127.0.0.1:8000/api/v1/books/
+GET http://127.0.0.1:8000/api/posts/
 
 ###
 
-POST http://127.0.0.1:8000/api/v1/books/create/
+POST http://127.0.0.1:8000/api/posts/
 Content-Type: application/json
 
 {
-    "author": "Стивенсон Р.",
-    "title": "Остров сокровищ",
-    "year": 1885
+    "text": "Tulip fields in Abbotsford, British Columbia, Canada",
+    "user": 1
 }
 
 ###
 
-GET http://127.0.0.1:8000/api/v1/books/3/
+GET http://127.0.0.1:8000/api/posts/1/
 
 ###
 
-PATCH http://127.0.0.1:8000/api/v1/books/update/4/
+PATCH http://127.0.0.1:8000/api/posts/1/
 Content-Type: application/json
 
 {
-    "title": "Таинственный остров"
+    "like_count": 2
 }
 
 ###
