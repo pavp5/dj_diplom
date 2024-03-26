@@ -5,10 +5,10 @@ GET http://127.0.0.1:8000/api/posts/
 
 POST http://127.0.0.1:8000/api/posts/
 Content-Type: application/json
+Authorization: Token 064d0c69df1e34f57ddf575e14f44c18750a2012
 
 {
-    "text": "Tulip fields in Abbotsford, British Columbia, Canada",
-    "user": 1
+    "text": "Test"
 }
 
 ###
@@ -19,24 +19,15 @@ GET http://127.0.0.1:8000/api/posts/1/
 
 PATCH http://127.0.0.1:8000/api/posts/1/
 Content-Type: application/json
+Authorization: Token 9977a68aaab386b89352d11cd082813aa2617113
 
 {
-    "like_count": 2
+    "like_count": 21
 }
 
 ###
 
-DELETE http://127.0.0.1:8000/api/v1/books/delete/5/
+DELETE http://127.0.0.1:8000/api/posts/4/
+Authorization: Token 064d0c69df1e34f57ddf575e14f44c18750a2012
 
 ###
-
-GET http://127.0.0.1:8000/api/v1/orders/2/
-
-###
-
-PATCH http://127.0.0.1:8000/api/v1/orders/2/
-Content-Type: application/json
-
-{
-    "user_name": "Петров Петр Андреевич"
-}
