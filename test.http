@@ -19,15 +19,15 @@ GET http://127.0.0.1:8000/api/posts/1/
 
 PATCH http://127.0.0.1:8000/api/posts/1/
 Content-Type: application/json
-Authorization: Token 9977a68aaab386b89352d11cd082813aa2617113
+Authorization: Token 064d0c69df1e34f57ddf575e14f44c18750a2012
 
 {
-    "like_count": 21
+    "address": "aaa"'
 }
 
 ###
 
-DELETE http://127.0.0.1:8000/api/posts/4/
-Authorization: Token 064d0c69df1e34f57ddf575e14f44c18750a2012
+DELETE http://127.0.0.1:8000/api/posts/1/
+Authorization: Token 9977a68aaab386b89352d11cd082813aa2617113
 
 ###
