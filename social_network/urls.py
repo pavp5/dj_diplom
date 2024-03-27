@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from posts.views import PostViewSet, CommentViewSet
+from posts.views import PostViewSet, CommentViewSet, PostImageViewSet
 
 post_router = DefaultRouter()
 post_router.register("posts", PostViewSet, basename="posts")
@@ -26,9 +26,13 @@ post_router.register("posts", PostViewSet, basename="posts")
 comment_router = DefaultRouter()
 comment_router.register("comments", CommentViewSet, basename="comments")
 
+image_router = DefaultRouter()
+image_router.register("images", PostImageViewSet, basename="images")
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/", include(post_router.urls)),
     path("api/", include(comment_router.urls)),
+    path("api/", include(image_router.urls)),
 
 ]
