@@ -11,9 +11,21 @@ Authorization: Token 064d0c69df1e34f57ddf575e14f44c18750a2012
     "text": "Test"
 }
 
+
 ###
 
 GET http://127.0.0.1:8000/api/posts/1/
+
+
+###
+
+POST http://127.0.0.1:8000/api/likes/
+Content-Type: application/json
+Authorization: Token 064d0c69df1e34f57ddf575e14f44c18750a2012
+
+{
+    "post": 1
+}
 
 ###
 

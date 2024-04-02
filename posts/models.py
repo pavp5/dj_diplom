@@ -13,7 +13,7 @@ class Post(models.Model):
     address = models.TextField(null=True)
     latitude = models.DecimalField(null=True, max_digits=8, decimal_places=6)
     longtitude = models.DecimalField(null=True, max_digits=8, decimal_places=6)
-    like_count = models.IntegerField(default=0)
+    # like_count = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
 
@@ -32,3 +32,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
+
+class Like(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="likes")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)

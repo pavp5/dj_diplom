@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from geopy.geocoders import Nominatim
 
-from .models import Post, Comment, PostImage
+from .models import Post, Comment, PostImage, Like
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,6 +20,7 @@ class PostSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation["images"] = PostImageSerializer(instance.images, many=True).data
         representation["comments"] = CommentSerializer(instance.comments, many=True).data
+        representation["likes_count"] = Like.objects.filter(post=instance.id).count()
         # Определение адреса по геогрфичеким координатам
         if representation["latitude"] is not None:
             geolocator = Nominatim(user_agent="social_network")
@@ -32,3 +33,10 @@ class PostImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostImage
         fields = "__all__"
+
+
+class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like
+        fields = "__all__"
+        read_only_fields = ["user", ]

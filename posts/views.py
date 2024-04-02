@@ -3,8 +3,8 @@ from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from geopy.geocoders import Nominatim
 
-from .models import Post, Comment, PostImage
-from .serializers import PostSerializer, CommentSerializer, PostImageSerializer
+from .models import Post, Like, Comment, PostImage
+from .serializers import PostSerializer, CommentSerializer, PostImageSerializer, LikeSerializer
 from .permissions import IsOwnerOrReadOnly
 
 
@@ -32,6 +32,7 @@ class PostViewSet(ModelViewSet):
             serializer.save()
 
 
+
 class PostImageViewSet(ModelViewSet):
     queryset = PostImage.objects.all()
     serializer_class = PostImageSerializer
@@ -42,6 +43,16 @@ class PostImageViewSet(ModelViewSet):
 class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    permission_classes = [IsOwnerOrReadOnly]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+
+class LikeViewSet(ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
     def perform_create(self, serializer):
